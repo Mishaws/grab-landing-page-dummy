@@ -8,6 +8,9 @@ import {
   ImageGallery,
   CTA,
   Footer,
+  ServicesGrid,
+  AboutUs,
+  Newsroom,
 } from '@/components'
 
 export default function Home() {
@@ -15,11 +18,10 @@ export default function Home() {
     <main className="overflow-x-hidden">
       <Navbar />
       <Hero />
-      <Positions />
+      <ServicesGrid />
       <ImageGallery />
-      <Benefits />
-      <Process />
-      <Testimonials />
+      <AboutUs />
+      <Newsroom />
       <CTA />
       <Footer />
     </main>

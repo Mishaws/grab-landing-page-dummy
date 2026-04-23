@@ -22,7 +22,7 @@ export function Navbar() {
       transition={{ duration: 0.6 }}
       className={`fixed w-full top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 backdrop-blur-md shadow-lg'
+          ? 'bg-white shadow-lg'
           : 'bg-transparent'
       }`}
     >
@@ -32,19 +32,19 @@ export function Navbar() {
             whileHover={{ scale: 1.05 }}
             className="text-2xl font-bold"
           >
-            <span className="bg-gradient-to-r from-green-500 to-blue-600 bg-clip-text text-transparent">
-              🚗 Grab
+            <span className={`font-bold ${isScrolled ? 'text-green-600' : 'text-white'}`}>
+              ☰ Grab
             </span>
           </motion.div>
 
           <div className="hidden md:flex items-center gap-8">
-            {['Home', 'Services', 'Features', 'About'].map((item) => (
+            {['Consumer', 'Driver', 'Merchant', 'Enterprise'].map((item) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}
                 whileHover={{ y: -2 }}
                 className={`font-medium transition-colors ${
-                  isScrolled ? 'text-gray-700 hover:text-green-500' : 'text-gray-700 hover:text-green-500'
+                  isScrolled ? 'text-gray-700 hover:text-green-600' : 'text-white hover:text-green-200'
                 }`}
               >
                 {item}
@@ -55,9 +55,13 @@ export function Navbar() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="hidden md:block px-6 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-lg hover:shadow-lg transition-shadow"
+            className={`hidden md:block px-6 py-2 font-bold rounded-lg transition-all ${
+              isScrolled 
+                ? 'bg-green-600 text-white hover:shadow-lg'
+                : 'bg-white text-green-600 hover:shadow-lg'
+            }`}
           >
-            Download App
+            Sign In
           </motion.button>
 
           {/* Mobile menu button */}
