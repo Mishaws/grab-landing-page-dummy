@@ -5,8 +5,6 @@ import {
   Benefits,
   Process,
   Testimonials,
-  ImageGallery,
-  CTA,
   Footer,
   ServicesGrid,
   AboutUs,
@@ -19,10 +17,8 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ServicesGrid />
-      <ImageGallery />
       <AboutUs />
       <Newsroom />
-      <CTA />
       <Footer />
     </main>
   )

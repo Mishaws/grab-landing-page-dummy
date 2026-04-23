@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import Image from 'next/image'
 
 const newsItems = [
   {
@@ -9,28 +10,32 @@ const newsItems = [
     date: '08/13/25',
     title: 'Grab Unveils T3 AI-Powered Experiences at Grab 2025 as Southeast Asia Industry',
     category: 'NEWS',
-    image: '📱',
+    image: '/images/GrabX-2026-4-scaled.jpg',
+    isImg: true,
   },
   {
     id: 2,
     date: '07/10/25',
     title: 'Grab in partnership with ViralBot officially launch Singapore first autonomous built...',
     category: 'FEATURE',
-    image: '🤝',
+    image: '/images/WhatsApp-Image-2026-03-30-at-9.56.39-AM.jpeg',
+    isImg: true,
   },
   {
     id: 3,
     date: '06/25/25',
     title: 'Grab Singapore launches #MorePowerCan with industry-first recognition reflects Grab',
     category: 'FEATURE',
-    image: '⚡',
+    image: '/images/Grab-Partner-Benefits-Updated-with-Women-Benefits.jpg',
+    isImg: true,
   },
   {
     id: 4,
     date: '05/15/25',
     title: 'UN Global Compact Network Singapore-Kantor and Grab Launch Landmark Study...',
     category: 'FEATURE',
-    image: '🌍',
+    image: '/images/PR-scaled.jpg',
+    isImg: true,
   },
 ]
 
@@ -91,30 +96,50 @@ export function Newsroom() {
               whileHover={{ y: -4 }}
               className="cursor-pointer group"
             >
-              <div className="bg-gray-100 rounded-lg h-48 lg:h-56 mb-4 flex items-center justify-center overflow-hidden group-hover:opacity-90 transition-opacity">
-                <span className="text-6xl">{news.image}</span>
+              {/* Image Container */}
+              <div className="relative bg-gray-100 rounded-lg h-48 lg:h-56 mb-4 overflow-hidden group-hover:shadow-lg transition-shadow">
+                {news.isImg ? (
+                  <img
+                    src={news.image}
+                    alt={news.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-gray-200 text-4xl">
+                    📰
+                  </div>
+                )}
               </div>
+
+              {/* Date */}
               <motion.span
                 className="text-xs font-semibold text-gray-500 uppercase tracking-wider"
               >
                 {news.date}
               </motion.span>
+
+              {/* Category */}
               <motion.p
                 className="text-gray-500 text-xs font-medium mt-2 mb-3"
               >
                 {news.category}
               </motion.p>
+
+              {/* Title */}
               <motion.h3
-                className="text-lg font-bold text-gray-900 leading-snug group-hover:text-green-600 transition-colors"
+                className="text-lg font-bold text-gray-900 leading-snug group-hover:text-green-600 transition-colors line-clamp-3"
               >
                 {news.title}
               </motion.h3>
-              <motion.p
+
+              {/* Read More Link */}
+              <motion.a
+                href="#"
                 whileHover={{ x: 4 }}
-                className="text-green-600 font-semibold text-sm mt-4 inline-flex items-center gap-2"
+                className="text-green-600 font-semibold text-sm mt-4 inline-flex items-center gap-2 hover:text-green-700"
               >
                 Read More →
-              </motion.p>
+              </motion.a>
             </motion.div>
           ))}
         </motion.div>
